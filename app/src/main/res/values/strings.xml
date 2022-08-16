@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Eisenhower Matrix</string>
+    <string name="description">Description</string>
+    <string name="priority">Priority</string>
+    <string name="is_your_task_important">Is your task important?</string>
+    <string name="is_your_task_an_urgent_one">Is your task an urgent one?</string>
+    <string name="task">Task</string>
+    <string name="important_and_urgent">Important and Urgent</string>
+    <string name="important_but_not_urgent">Important, but not urgent</string>
+    <string name="not_important_but_urgent">Not important, but urgent</string>
+    <string name="not_important_and_not_urgent">Not important, and not urgent</string>
+    <string name="apply">Apply</string>
+    <string name="delete">Delete</string>
+</resources>

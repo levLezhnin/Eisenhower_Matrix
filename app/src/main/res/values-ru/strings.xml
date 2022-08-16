@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Матрица Эйзенхауера</string>
+    <string name="description">Описание</string>
+    <string name="priority">Приоритет Задачи</string>
+    <string name="is_your_task_important">Задача важна для вас?</string>
+    <string name="is_your_task_an_urgent_one">Необходимо ли вам выполнить задачу в ближайшее время?</string>
+    <string name="task">Задача</string>
+    <string name="important_and_urgent">Важно и срочно</string>
+    <string name="important_but_not_urgent">Важно, но не срочно</string>
+    <string name="not_important_but_urgent">Не важно, но срочно</string>
+    <string name="not_important_and_not_urgent">Не важно и не срочно</string>
+    <string name="apply">Принять</string>
+    <string name="delete">Удалить</string>
+</resources>

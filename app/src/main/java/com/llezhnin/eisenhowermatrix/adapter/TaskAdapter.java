@@ -1,9 +1,15 @@
 package com.llezhnin.eisenhowermatrix.adapter;
 
+import android.content.ClipData;
+import android.content.ClipDescription;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
+import android.view.DragEvent;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -13,24 +19,29 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.llezhnin.eisenhowermatrix.MainActivity;
 import com.llezhnin.eisenhowermatrix.R;
+import com.llezhnin.eisenhowermatrix.category.CategoryDataManager;
 import com.llezhnin.eisenhowermatrix.domain.Task;
 import com.llezhnin.eisenhowermatrix.fragments.ChangeTaskFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final Context context;
     private final LayoutInflater layoutInflater;
-    private final List<Task> taskList;
-    private int priority;
-
-    public void setPriority(int priority) {
-        this.priority = priority;
-    }
+    private List<Task> taskList;
 
     public List<Task> getTaskList() {
         return taskList;
+    }
+
+    public void setTaskList(List<Task> taskList) {
+        this.taskList = new ArrayList<>(taskList);
+    }
+
+    public void addTaskIntoList(Task task) {
+        taskList.add(task);
     }
 
     public TaskAdapter(Context context, List<Task> taskList) {
@@ -66,44 +77,47 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         ((TaskHolder) viewHolder).description.setText(task.getDescription());
 
-        viewHolder.itemView.setOnLongClickListener(view -> {
-            Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-            vibrator.vibrate(100);
-            ChangeTaskFragment changeTaskFragment = new ChangeTaskFragment();
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("Task", task);
-            changeTaskFragment.setArguments(bundle);
-            MainActivity mainActivity = (MainActivity) context;
-            mainActivity.getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.fl_main, changeTaskFragment)
-                    .commit();
-            return true;
+        GestureDetector gestureDetector = new GestureDetector(layoutInflater.getContext(), new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                ChangeTaskFragment changeTaskFragment = new ChangeTaskFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("Task", task);
+                changeTaskFragment.setArguments(bundle);
+                MainActivity mainActivity = (MainActivity) context;
+                mainActivity.getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.fl_main, changeTaskFragment)
+                        .commit();
+                return super.onDoubleTap(e);
+            }
         });
 
+        viewHolder.itemView.setOnTouchListener((view, motionEvent) -> gestureDetector.onTouchEvent(motionEvent));
+
 //        viewHolder.itemView.setOnLongClickListener(view -> {
-//            Vibrator vibe = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
-//            vibe.vibrate(100);
-//            ClipData data = ClipData.newPlainText("Task", String.valueOf(task.getId()));
+//            Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
+//            vibrator.vibrate(100);
+//            ClipData clipData = ClipData.newPlainText(String.valueOf(task.getId()), null);
 //            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-//            view.startDrag(data, shadowBuilder, null, 0);
+//            view.startDrag(clipData, shadowBuilder, null, 0);
 //            return true;
 //        });
 //
 //        viewHolder.itemView.setOnDragListener((v, e) ->
 //        {
-//            Task buffered_task = null;
-//            RecyclerView target;
 //            switch (e.getAction()) {
 //                case DragEvent.ACTION_DRAG_STARTED:
-//                    if (e.getClipDescription().getLabel().equals("Task")) {
+//                    if (e.getClipDescription().hasMimeType(ClipDescription.MIMETYPE_TEXT_PLAIN)) {
 //                        v.invalidate();
 //                        for (Task t : taskList) {
-//                            if(t.getId() == Integer.parseInt(String.valueOf(e.getClipDescription()))) {
-//                                buffered_task = t;
+//                            if (t.getId() == Integer.parseInt(e.getClipDescription().getLabel().toString())) {
+//                                CategoryDataManager.buffered_task = t;
+//                                taskList.remove(t);
+//                                break;
 //                            }
 //                        }
-//                        if(buffered_task == null) {
+//                        if (CategoryDataManager.buffered_task == null) {
 //                            try {
 //                                throw new Exception("something went wrong");
 //                            } catch (Exception exception) {
@@ -111,30 +125,13 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //                            }
 //                        }
 //                        return true;
+//                    } else {
+//                        return false;
 //                    }
-//                    return false;
-//                case DragEvent.ACTION_DRAG_ENTERED:
-//
-//                    v.invalidate();
-//
-//                    return true;
-//
-//                case DragEvent.ACTION_DRAG_LOCATION:
-//
-//                    return true;
-//
-//                case DragEvent.ACTION_DRAG_EXITED:
-//
-//                    v.invalidate();
-//
-//                    return true;
-//
-//                case DragEvent.ACTION_DROP:
-//
-//
-//                    return true;
 //
 //                case DragEvent.ACTION_DRAG_ENDED:
+//
+//                    CategoryDataManager.updateAllDatasets();
 //
 //                    v.invalidate();
 //
@@ -144,7 +141,7 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 //                        Log.d("DRAGNDROP_DEBUG", "The drop didn't work.");
 //                    }
 //
-//                    return true;
+//                    return false;
 //
 //                default:
 //                    Log.e("DragDrop Example", "Unknown action type received by View.OnDragListener.");

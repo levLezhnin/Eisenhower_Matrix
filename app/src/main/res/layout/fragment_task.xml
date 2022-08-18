@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- TODO: всё блять съезжает к хуям вне зависимости от наличия ёбаной клавиатуры!!!!!!!!!!!!!!!-->
+<?xml version="1.0" encoding="utf-8"?><!-- TODO: всё блять съезжает к хуям вне зависимости от наличия ёбаной клавиатуры!!!!!!!!!!!!!!!-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_fragment_main"
@@ -44,6 +43,7 @@
             android:layout_weight="1"
             android:gravity="center|top"
             android:inputType="text"
+            android:ems="23"
             android:text=""
             android:textSize="35sp" />
     </LinearLayout>
@@ -75,9 +75,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="15"
                 android:gravity="center"
-                android:textSize="25sp"
+                android:text="@string/is_your_task_important"
                 android:textColor="@color/black"
-                android:text="@string/is_your_task_important">
+                android:textSize="25sp">
 
             </TextView>
 
@@ -98,9 +98,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="15"
                 android:gravity="center"
-                android:textSize="25sp"
+                android:text="@string/is_your_task_an_urgent_one"
                 android:textColor="@color/black"
-                android:text="@string/is_your_task_an_urgent_one">
+                android:textSize="25sp">
 
             </TextView>
 
@@ -120,12 +120,13 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_weight="0"
-        android:text="@string/apply"/>
+        android:text="@string/apply" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="0"
-        android:text="@string/delete"/>
+        android:text="@string/delete" />
 </LinearLayout>

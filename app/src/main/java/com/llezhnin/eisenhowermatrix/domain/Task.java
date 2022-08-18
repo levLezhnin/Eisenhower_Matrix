@@ -3,12 +3,13 @@ package com.llezhnin.eisenhowermatrix.domain;
 import androidx.annotation.NonNull;
 
 import com.llezhnin.eisenhowermatrix.database.DatabaseConstants;
+import com.llezhnin.eisenhowermatrix.database.TableWorkConstants;
 
 import java.io.Serializable;
 
 public class Task implements Serializable {
 
-    private static final String TABLE_NAME = DatabaseConstants.TABLE_NAME_WORK;
+    private static final String TABLE_NAME = TableWorkConstants.TABLE_NAME;
 
     public static String getTable_Name() {
         return TABLE_NAME;

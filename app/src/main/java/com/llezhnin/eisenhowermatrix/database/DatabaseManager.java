@@ -72,6 +72,6 @@ public class DatabaseManager {
     }
 
     public void onDataChanged() {
-        CategoryDataManager.updateDataset();
+        CategoryDataManager.updateAllDatasets();
     }
 }

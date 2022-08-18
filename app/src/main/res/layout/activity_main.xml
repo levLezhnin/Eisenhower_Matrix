@@ -47,9 +47,7 @@
                             android:id="@+id/rv_importance3"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                            app:spanCount="2" />
+                            android:layout_weight="1" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -70,9 +68,7 @@
                             android:id="@+id/rv_importance2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                            app:spanCount="2" />
+                            android:layout_weight="1" />
                     </LinearLayout>
                 </TableRow>
 
@@ -100,9 +96,7 @@
                             android:id="@+id/rv_importance1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                            app:spanCount="2" />
+                            android:layout_weight="1" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -123,9 +117,7 @@
                             android:id="@+id/rv_importance0"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                            app:spanCount="2" />
+                            android:layout_weight="1" />
                     </LinearLayout>
 
                 </TableRow>

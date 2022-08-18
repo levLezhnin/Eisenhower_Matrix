@@ -1,34 +1,26 @@
 package com.llezhnin.eisenhowermatrix.category;
 
-import android.util.Log;
-
-import com.llezhnin.eisenhowermatrix.MainActivity;
 import com.llezhnin.eisenhowermatrix.domain.Task;
-import com.llezhnin.eisenhowermatrix.rest.TaskAPIImplementation;
 
 import java.util.List;
 
 public class CategoryDataManager {
 
-    private static List<Category> categories;
+    public static Task buffered_task; //buffers a task, which is being dragged by a user
 
-    public CategoryDataManager(List<Category> categories) {
+    private static List<CustomRecyclerView> categories;
+
+    public CategoryDataManager(List<CustomRecyclerView> categories) {
         CategoryDataManager.categories = categories;
     }
 
-    public static void setCategories(List<Category> categories) {
+    public static void setCategories(List<CustomRecyclerView> categories) {
         CategoryDataManager.categories = categories;
     }
 
-    public static void updateDataset() {
-        for (Category c : categories) {
+    public static void updateAllDatasets() {
+        for (CustomRecyclerView c : categories) {
             c.updateDataset();
-        }
-        Log.d("DATASET_DEBUG", "dataset updated");
-
-        List<Task> existing_tasks = new TaskAPIImplementation(MainActivity.databaseManager).getAll();
-        for (Task t : existing_tasks) {
-            System.out.println(t.toString());
         }
     }
 }

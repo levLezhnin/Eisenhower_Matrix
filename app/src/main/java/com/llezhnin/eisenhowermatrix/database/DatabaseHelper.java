@@ -20,12 +20,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(DatabaseConstants.TABLE_STRUCTURE);
+        db.execSQL(TableWorkConstants.TABLE_STRUCTURE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(DatabaseConstants.DROP_TABLE);
+        db.execSQL(TableWorkConstants.DROP_TABLE);
         onCreate(db);
     }
 }

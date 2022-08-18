@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.llezhnin.eisenhowermatrix.category.CategoryDataManager;
-import com.llezhnin.eisenhowermatrix.category.Category;
+import com.llezhnin.eisenhowermatrix.category.CustomRecyclerView;
 import com.llezhnin.eisenhowermatrix.database.DatabaseHelper;
 import com.llezhnin.eisenhowermatrix.database.DatabaseManager;
 import com.llezhnin.eisenhowermatrix.fragments.NewTaskFragment;
@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     @SuppressLint("StaticFieldLeak")
     public static DatabaseManager databaseManager;
-    private static List<Category> categories;
+    private static List<CustomRecyclerView> categories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,10 +43,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         categories = new ArrayList<>();
-        categories.add(new Category(findViewById(R.id.rv_importance3), 3));
-        categories.add(new Category(findViewById(R.id.rv_importance2), 2));
-        categories.add(new Category(findViewById(R.id.rv_importance1), 1));
-        categories.add(new Category(findViewById(R.id.rv_importance0), 0));
+        categories.add(new CustomRecyclerView(findViewById(R.id.rv_importance3), 3));
+        categories.add(new CustomRecyclerView(findViewById(R.id.rv_importance2), 2));
+        categories.add(new CustomRecyclerView(findViewById(R.id.rv_importance1), 1));
+        categories.add(new CustomRecyclerView(findViewById(R.id.rv_importance0), 0));
 
         CategoryDataManager.setCategories(categories);
 

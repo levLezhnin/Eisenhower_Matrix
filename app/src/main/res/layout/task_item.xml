@@ -6,7 +6,9 @@
     android:layout_margin="7dp"
     android:layout_weight="1"
     android:orientation="horizontal"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:clickable="true"
+    android:focusable="true">
 
     <TextView
         android:id="@+id/tv_work_description"

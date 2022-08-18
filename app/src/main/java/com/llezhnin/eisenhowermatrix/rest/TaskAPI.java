@@ -21,4 +21,6 @@ public interface TaskAPI {
     void update(int id, String description, int importance);
 
     void delete(int id);
+
+    void rebuildIndexes();
 }

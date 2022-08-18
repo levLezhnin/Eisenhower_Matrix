@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 
 import com.llezhnin.eisenhowermatrix.database.DatabaseManager;
+import com.llezhnin.eisenhowermatrix.database.TableWorkConstants;
 import com.llezhnin.eisenhowermatrix.domain.Task;
 import com.llezhnin.eisenhowermatrix.domain.mapper.TaskMapper;
 
@@ -70,5 +71,21 @@ public class TaskAPIImplementation implements TaskAPI {
     @Override
     public void delete(int id) {
         databaseManager.deleteById(Task.getTable_Name(), id);
+        rebuildIndexes();
+    }
+
+    @Override
+    public void rebuildIndexes() {
+        List<Task> tasks_buffer = getAll();
+        databaseManager.openDB();
+        databaseManager.getDb().execSQL(TableWorkConstants.DROP_TABLE);
+        databaseManager.getDb().execSQL(TableWorkConstants.TABLE_STRUCTURE);
+        int index = 1;
+        for(Task t : tasks_buffer) {
+            t.setId(index);
+            insert(t);
+            index++;
+        }
+        System.out.println(getAll());
     }
 }

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,6 @@ public class NewTaskFragment extends Fragment {
 
     private EditText et_description;
     private CheckBox cb_is_important, cb_is_urgent;
-    private Button btn_add, delete;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,9 +42,9 @@ public class NewTaskFragment extends Fragment {
         et_description = view.findViewById(R.id.et_description);
         cb_is_important = view.findViewById(R.id.cb_is_important);
         cb_is_urgent = view.findViewById(R.id.cb_is_urgent);
-        delete = view.findViewById(R.id.delete);
+        Button delete = view.findViewById(R.id.delete);
         delete.setEnabled(false);
-        btn_add = view.findViewById(R.id.apply);
+        Button btn_add = view.findViewById(R.id.apply);
 
         btn_add.setOnClickListener(view1 -> {
             if(et_description.getText().length() == 0) {
@@ -54,8 +54,10 @@ public class NewTaskFragment extends Fragment {
                 Task task = new Task(et_description.getText().toString(), priority);
                 new TaskAPIImplementation(MainActivity.databaseManager).insert(task);
                 getFragmentManager().beginTransaction()
+                        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
                         .remove(this)
                         .commit();
+                MainActivity.onFragmentFinished();
             }
         });
     }

@@ -1,12 +1,12 @@
 package com.llezhnin.eisenhowermatrix.category;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
-import android.view.DragEvent;
 import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.llezhnin.eisenhowermatrix.MainActivity;
@@ -32,8 +32,9 @@ public class CustomRecyclerView {
         this.priority = priority;
         this.taskAdapter = new TaskAdapter(getRecyclerView().getContext(), new ArrayList<>());
         updateDataset();
-        this.recyclerView.setLayoutManager(new CustomGridLayoutManager(this.recyclerView.getContext(), 2));
         this.recyclerView.setAdapter(taskAdapter);
+        this.recyclerView.setLayoutManager(new CustomGridLayoutManager(this.recyclerView.getContext(), 2));
+        this.recyclerView.setHasFixedSize(true);
 //        this.recyclerView.setOnDragListener((view, dragEvent) -> {
 //            if (dragEvent.getAction() == DragEvent.ACTION_DROP) {
 //                Task task = CategoryDataManager.buffered_task;
@@ -48,8 +49,8 @@ public class CustomRecyclerView {
 
     public void updateDataset() {
         List<Task> tasks_buffer = new ArrayList<>();
-        for(Task t : new TaskAPIImplementation(MainActivity.databaseManager).getAll()) {
-            if(t.getPriority() == priority) {
+        for (Task t : new TaskAPIImplementation(MainActivity.databaseManager).getAll()) {
+            if (t.getPriorityInt() == priority) {
                 tasks_buffer.add(t);
             }
         }

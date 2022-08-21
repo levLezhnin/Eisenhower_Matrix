@@ -11,5 +11,6 @@
     <string name="not_important_but_urgent">Не важно, но срочно</string>
     <string name="not_important_and_not_urgent">Не важно и не срочно</string>
     <string name="apply">Принять</string>
-    <string name="delete">Удалить</string>
+    <string name="complete">Завершить задачу</string>
+    <string name="amount_of_finished_tasks">Кол-во завершённых задач:</string>
 </resources>

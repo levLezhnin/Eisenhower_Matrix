@@ -1,139 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fl_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:ignore="UselessParent">
+        android:orientation="vertical"
+        tools:context=".MainActivity">
 
         <LinearLayout
+            android:id="@+id/tr_important"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".MainActivity">
+            android:layout_weight="1"
+            android:background="@color/teal_200"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
-            <TableLayout
-                android:id="@+id/matrix"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:weightSum="2">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <TableRow
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@color/teal_200">
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@color/purple_200"
+                    android:gravity="center"
+                    android:text="@string/important_and_urgent" />
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:background="@color/purple_200"
-                            android:gravity="center"
-                            android:text="@string/important_and_urgent" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_importance3"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:background="@color/purple_200"
-                            android:gravity="center"
-                            android:text="@string/important_but_not_urgent" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_importance2"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
-                    </LinearLayout>
-                </TableRow>
-
-                <TableRow
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_importance3"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:background="@color/teal_700">
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:background="@color/purple_200"
-                            android:gravity="center"
-                            android:text="@string/not_important_but_urgent" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@color/purple_200"
+                    android:gravity="center"
+                    android:text="@string/important_but_not_urgent" />
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_importance1"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
-                    </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_importance2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/tr_not_important"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/teal_700"
+            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="5"
-                            android:background="@color/purple_200"
-                            android:gravity="center"
-                            android:text="@string/not_important_and_not_urgent" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_importance0"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1" />
-                    </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@color/purple_200"
+                    android:gravity="center"
+                    android:text="@string/not_important_but_urgent" />
 
-                </TableRow>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_importance1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
-            </TableLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@color/purple_200"
+                    android:gravity="center"
+                    android:text="@string/not_important_and_not_urgent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_importance0"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+            </LinearLayout>
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_add_work"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|bottom"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="30dp"
-            android:text="+"
-            android:textSize="20sp" />
-    </FrameLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_add_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="+"
+        android:textColor="@color/white"
+        android:textSize="50sp" />
 </FrameLayout>

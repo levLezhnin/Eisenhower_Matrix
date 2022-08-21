@@ -1,17 +1,15 @@
 package com.llezhnin.eisenhowermatrix.adapter;
 
-import android.content.ClipData;
-import android.content.ClipDescription;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.util.Log;
-import android.view.DragEvent;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,7 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.llezhnin.eisenhowermatrix.MainActivity;
 import com.llezhnin.eisenhowermatrix.R;
-import com.llezhnin.eisenhowermatrix.category.CategoryDataManager;
 import com.llezhnin.eisenhowermatrix.domain.Task;
 import com.llezhnin.eisenhowermatrix.fragments.ChangeTaskFragment;
 
@@ -32,16 +29,8 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final LayoutInflater layoutInflater;
     private List<Task> taskList;
 
-    public List<Task> getTaskList() {
-        return taskList;
-    }
-
     public void setTaskList(List<Task> taskList) {
         this.taskList = new ArrayList<>(taskList);
-    }
-
-    public void addTaskIntoList(Task task) {
-        taskList.add(task);
     }
 
     public TaskAdapter(Context context, List<Task> taskList) {
@@ -52,15 +41,22 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private class TaskHolder extends RecyclerView.ViewHolder {
 
+        private LinearLayout layout;
         private TextView description;
+
+        public void setLayoutBackground(int backgroundId) {
+            layout.setBackgroundResource(backgroundId);
+        }
 
         public TaskHolder(@NonNull View itemView) {
             super(itemView);
+            layout = itemView.findViewById(R.id.ll_item);
             description = itemView.findViewById(R.id.tv_work_description);
         }
     }
 
 
+    @NonNull
     @Override
     public TaskHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
@@ -70,12 +66,19 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
 
         Task task = taskList.get(i);
 
-        ((TaskHolder) viewHolder).description.setText(task.getDescription());
+        Log.d("TASK_DEBUG", task.toString());
+
+        String desc = task.getDescription() +
+                "...";
+        ((TaskHolder) viewHolder).description.setText(desc);
+
+        ((TaskHolder) viewHolder).setLayoutBackground(task.getPriority().getDrawable_id());
 
         GestureDetector gestureDetector = new GestureDetector(layoutInflater.getContext(), new GestureDetector.SimpleOnGestureListener() {
             @Override
@@ -89,11 +92,12 @@ public class TaskAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         .beginTransaction()
                         .add(R.id.fl_main, changeTaskFragment)
                         .commit();
+                MainActivity.onFragmentStarted();
                 return super.onDoubleTap(e);
             }
         });
 
-        viewHolder.itemView.setOnTouchListener((view, motionEvent) -> gestureDetector.onTouchEvent(motionEvent));
+        viewHolder.itemView.setOnTouchListener((View view, MotionEvent motionEvent) -> gestureDetector.onTouchEvent(motionEvent));
 
 //        viewHolder.itemView.setOnLongClickListener(view -> {
 //            Vibrator vibrator = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);

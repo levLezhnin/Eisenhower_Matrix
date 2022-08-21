@@ -1,12 +1,18 @@
 package com.llezhnin.eisenhowermatrix;
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TableRow;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.llezhnin.eisenhowermatrix.category.CategoryDataManager;
 import com.llezhnin.eisenhowermatrix.category.CustomRecyclerView;
@@ -22,7 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     @SuppressLint("StaticFieldLeak")
     public static DatabaseManager databaseManager;
-    private static List<CustomRecyclerView> categories;
+    @SuppressLint("StaticFieldLeak")
+    private static Button add_task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,17 +39,19 @@ public class MainActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         databaseManager = new DatabaseManager(this);
 
-        Button button = findViewById(R.id.btn_add_work);
+        add_task = findViewById(R.id.btn_add_work);
 
-        button.setOnClickListener(view -> {
+        add_task.setOnClickListener(view -> {
             NewTaskFragment newTaskFragment = new NewTaskFragment();
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.fl_main, newTaskFragment)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .replace(R.id.fl_main, newTaskFragment)
                     .commit();
+            onFragmentStarted();
         });
 
-        categories = new ArrayList<>();
+        List<CustomRecyclerView> categories = new ArrayList<>();
         categories.add(new CustomRecyclerView(findViewById(R.id.rv_importance3), 3));
         categories.add(new CustomRecyclerView(findViewById(R.id.rv_importance2), 2));
         categories.add(new CustomRecyclerView(findViewById(R.id.rv_importance1), 1));
@@ -53,13 +62,23 @@ public class MainActivity extends AppCompatActivity {
         databaseManager.onDataChanged();
     }
 
+    public static void onFragmentStarted() {
+        add_task.setVisibility(View.INVISIBLE);
+    }
+
+    public static void onFragmentFinished() {
+        add_task.setVisibility(View.VISIBLE);
+    }
+
     @Override
     public void onBackPressed() {
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fl_main);
         if (fragment != null) {
             getSupportFragmentManager().beginTransaction()
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE)
                     .remove(fragment)
                     .commit();
+            onFragmentFinished();
         } else {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Предупреждение")

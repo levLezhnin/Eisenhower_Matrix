@@ -10,5 +10,6 @@
     <string name="not_important_but_urgent">Not important, but urgent</string>
     <string name="not_important_and_not_urgent">Not important, and not urgent</string>
     <string name="apply">Apply</string>
-    <string name="delete">Delete</string>
+    <string name="complete">Complete a task</string>
+    <string name="amount_of_finished_tasks">Amount of finished tasks:</string>
 </resources>

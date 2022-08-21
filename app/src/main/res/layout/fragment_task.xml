@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><!-- TODO: всё блять съезжает к хуям вне зависимости от наличия ёбаной клавиатуры!!!!!!!!!!!!!!!-->
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_fragment_main"
@@ -15,16 +15,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center|top"
+        android:gravity="center"
         android:text="@string/task"
-        android:textSize="35sp" />
+        android:textSize="30sp"
+        android:textColor="@color/black"/>
 
     <LinearLayout
         android:id="@+id/ll_add_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:orientation="vertical">
 
         <TextView
@@ -32,20 +33,23 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center|top"
+            android:textColor="@color/black"
+            android:gravity="center"
             android:text="@string/description"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <EditText
             android:id="@+id/et_description"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="center|top"
-            android:inputType="text"
-            android:ems="23"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:inputType="textMultiLine"
             android:text=""
-            android:textSize="35sp" />
+            android:textSize="25sp"
+            android:importantForAutofill="no"
+            tools:ignore="LabelFor" />
     </LinearLayout>
 
     <LinearLayout
@@ -53,31 +57,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_weight="2"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_weight="1">
 
         <TextView
             android:id="@+id/tv_priority"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center|top"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
             android:text="@string/priority"
-            android:textSize="30sp" />
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_weight="0">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="15"
+                android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/is_your_task_important"
                 android:textColor="@color/black"
-                android:textSize="25sp">
+                android:textSize="20sp">
 
             </TextView>
 
@@ -85,22 +92,27 @@
                 android:id="@+id/cb_is_important"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="0">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="15"
+                android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/is_your_task_an_urgent_one"
                 android:textColor="@color/black"
-                android:textSize="25sp">
+                android:textSize="20sp">
 
             </TextView>
 
@@ -108,25 +120,38 @@
                 android:id="@+id/cb_is_urgent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:layout_weight="1" />
         </LinearLayout>
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/apply"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:layout_weight="0"
-        android:text="@string/apply" />
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/delete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0"
-        android:text="@string/delete" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/apply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_weight="0"
+            android:text="@string/apply" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_weight="0"
+            android:text="@string/complete" />
+    </LinearLayout>
 </LinearLayout>

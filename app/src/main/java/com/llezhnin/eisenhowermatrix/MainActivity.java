@@ -3,11 +3,8 @@ package com.llezhnin.eisenhowermatrix;
 import android.annotation.SuppressLint;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TableRow;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("StaticFieldLeak")
     public static DatabaseManager databaseManager;
     @SuppressLint("StaticFieldLeak")
-    private static Button add_task;
+    private static Button btn_add_task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
         databaseHelper = new DatabaseHelper(this);
         databaseManager = new DatabaseManager(this);
 
-        add_task = findViewById(R.id.btn_add_work);
+        btn_add_task = findViewById(R.id.btn_add_task);
 
-        add_task.setOnClickListener(view -> {
+        btn_add_task.setOnClickListener(view -> {
             NewTaskFragment newTaskFragment = new NewTaskFragment();
             getSupportFragmentManager()
                     .beginTransaction()
-                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                    .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
                     .replace(R.id.fl_main, newTaskFragment)
                     .commit();
             onFragmentStarted();
@@ -63,11 +60,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public static void onFragmentStarted() {
-        add_task.setVisibility(View.INVISIBLE);
+        btn_add_task.setVisibility(View.INVISIBLE);
     }
 
     public static void onFragmentFinished() {
-        add_task.setVisibility(View.VISIBLE);
+        btn_add_task.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -80,11 +77,12 @@ public class MainActivity extends AppCompatActivity {
                     .commit();
             onFragmentFinished();
         } else {
+            Resources resources = getResources();
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Предупреждение")
-                    .setMessage("Вы точно хотите выйти из приложения?")
-                    .setPositiveButton("Да", (dialog, id) -> finish())
-                    .setNegativeButton("Нет", (dialog, id) -> dialog.cancel());
+            builder.setTitle(resources.getString(R.string.alert))
+                    .setMessage(resources.getString(R.string.alert_message))
+                    .setPositiveButton(resources.getString(R.string.yes), (dialog, id) -> finish())
+                    .setNegativeButton(resources.getString(R.string.no), (dialog, id) -> dialog.cancel());
             builder.create();
             builder.show();
         }

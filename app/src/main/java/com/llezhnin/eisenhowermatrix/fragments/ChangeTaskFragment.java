@@ -60,7 +60,7 @@ public class ChangeTaskFragment extends Fragment {
         });
 
         Button delete = view.findViewById(R.id.delete);
-        delete.setEnabled(true);
+        delete.setVisibility(View.VISIBLE);
 
         delete.setOnClickListener(view2 -> {
             new TaskAPIImplementation(MainActivity.databaseManager).delete(task.getId());

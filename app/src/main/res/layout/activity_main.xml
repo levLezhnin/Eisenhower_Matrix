@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fl_main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/teal_200"
+            android:background="@color/background_color"
             android:baselineAligned="false"
             android:orientation="horizontal">
 
@@ -30,8 +31,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
-                    android:background="@color/purple_200"
+                    android:background="@color/tv_main_activity_color"
                     android:gravity="center"
+                    android:textSize="20sp"
                     android:text="@string/important_and_urgent" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -51,8 +53,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
-                    android:background="@color/purple_200"
+                    android:background="@color/tv_main_activity_color"
                     android:gravity="center"
+                    android:textSize="20sp"
                     android:text="@string/important_but_not_urgent" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -68,8 +71,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/teal_700"
-            android:orientation="horizontal">
+            android:background="@color/background_color"
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -81,8 +85,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
-                    android:background="@color/purple_200"
+                    android:background="@color/tv_main_activity_color"
                     android:gravity="center"
+                    android:textSize="20sp"
                     android:text="@string/not_important_but_urgent" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -102,8 +107,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="5"
-                    android:background="@color/purple_200"
+                    android:background="@color/tv_main_activity_color"
                     android:gravity="center"
+                    android:textSize="20sp"
                     android:text="@string/not_important_and_not_urgent" />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -117,11 +123,12 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_add_work"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_add_task"
+        android:background="@drawable/button_style_activity_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
+        android:layout_gravity="end|bottom"
         android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:text="+"

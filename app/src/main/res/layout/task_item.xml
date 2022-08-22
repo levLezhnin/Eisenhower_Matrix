@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_item"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
+
     android:layout_height="wrap_content"
     android:layout_margin="7dp"
     android:layout_weight="1"
     android:orientation="horizontal"
-    android:background="@color/white"
     android:clickable="true"
     android:focusable="true">
 
@@ -19,8 +19,12 @@
         android:fontFamily="sans-serif"
         android:gravity="center"
         android:padding="10dp"
-        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textColor="@color/task_item_tv_text_color"
+        android:shadowColor="#000000"
+        android:shadowDx="1.8"
+        android:shadowDy="1.8"
+        android:shadowRadius="0.1"
         android:maxLength="20"/>
-
 
 </LinearLayout>

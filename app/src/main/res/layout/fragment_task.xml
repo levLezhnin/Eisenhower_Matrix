@@ -4,7 +4,7 @@
     android:id="@+id/ll_fragment_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/background_color"
     android:clickable="true"
     android:focusable="true"
     android:orientation="vertical"
@@ -16,9 +16,14 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
+        android:shadowColor="#000000"
+        android:shadowDx="1.8"
+        android:shadowDy="1.8"
+        android:shadowRadius="0.1"
         android:text="@string/task"
-        android:textSize="30sp"
-        android:textColor="@color/black"/>
+        android:textColor="@color/white"
+        android:textSize="40sp"
+        android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/ll_add_description"
@@ -33,22 +38,30 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:textColor="@color/black"
             android:gravity="center"
+            android:shadowColor="#000000"
+            android:shadowDx="1.8"
+            android:shadowDy="1.8"
+            android:shadowRadius="0.1"
             android:text="@string/description"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_description"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
-            android:inputType="textMultiLine"
-            android:text=""
-            android:textSize="25sp"
             android:importantForAutofill="no"
+            android:inputType="textMultiLine"
+            android:shadowColor="#000000"
+            android:shadowDx="1.8"
+            android:shadowDy="1.8"
+            android:shadowRadius="0.1"
+            android:textColor="@color/white"
+            android:textSize="30sp"
             tools:ignore="LabelFor" />
     </LinearLayout>
 
@@ -57,34 +70,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_priority"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black"
+            android:shadowColor="#000000"
+            android:shadowDx="1.8"
+            android:shadowDy="1.8"
+            android:shadowRadius="0.1"
             android:text="@string/priority"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="35sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_weight="0">
+            android:layout_weight="0"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="15"
                 android:layout_gravity="center"
+                android:layout_weight="15"
                 android:gravity="center"
+                android:shadowColor="#000000"
+                android:shadowDx="1.8"
+                android:shadowDy="1.8"
+                android:shadowRadius="0.1"
                 android:text="@string/is_your_task_important"
-                android:textColor="@color/black"
-                android:textSize="20sp">
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold">
 
             </TextView>
 
@@ -93,26 +117,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_weight="0">
+            android:layout_weight="0"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="15"
                 android:layout_gravity="center"
+                android:layout_weight="15"
                 android:gravity="center"
+                android:shadowColor="#000000"
+                android:shadowDx="1.8"
+                android:shadowDy="1.8"
+                android:shadowRadius="0.1"
                 android:text="@string/is_your_task_an_urgent_one"
-                android:textColor="@color/black"
-                android:textSize="20sp">
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold">
 
             </TextView>
 
@@ -121,37 +150,55 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:gravity="center" />
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/apply"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_style_fragment_task"
+        android:shadowColor="#000000"
+        android:shadowDx="1.8"
+        android:shadowDy="1.8"
+        android:shadowRadius="0.1"
+        android:text="@string/apply"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/apply"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_weight="0"
-            android:text="@string/apply" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/delete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_style_fragment_task"
+        android:shadowColor="#000000"
+        android:shadowDx="1.8"
+        android:shadowDy="1.8"
+        android:shadowRadius="0.1"
+        android:text="@string/complete"
+        android:textColor="@color/white"
+        android:textSize="20sp" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/delete"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_weight="0"
-            android:text="@string/complete" />
-    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"/>
 </LinearLayout>

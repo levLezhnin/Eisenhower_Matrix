@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.llezhnin.eisenhowermatrix.MainActivity;
@@ -33,7 +34,7 @@ public class CustomRecyclerView {
         this.taskAdapter = new TaskAdapter(getRecyclerView().getContext(), new ArrayList<>());
         updateDataset();
         this.recyclerView.setAdapter(taskAdapter);
-        this.recyclerView.setLayoutManager(new CustomGridLayoutManager(this.recyclerView.getContext(), 2));
+        this.recyclerView.setLayoutManager(new CustomLayoutManager(this.recyclerView.getContext()));
         this.recyclerView.setHasFixedSize(true);
 //        this.recyclerView.setOnDragListener((view, dragEvent) -> {
 //            if (dragEvent.getAction() == DragEvent.ACTION_DROP) {
@@ -62,23 +63,23 @@ public class CustomRecyclerView {
         taskAdapter.notifyDataSetChanged();
     }
 
-    private static class CustomGridLayoutManager extends GridLayoutManager {
+    private static class CustomLayoutManager extends LinearLayoutManager {
 
         @Override
         public boolean supportsPredictiveItemAnimations() {
             return false;
         }
 
-        public CustomGridLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        public CustomLayoutManager(Context context) {
+            super(context);
+        }
+
+        public CustomLayoutManager(Context context, int orientation, boolean reverseLayout) {
+            super(context, orientation, reverseLayout);
+        }
+
+        public CustomLayoutManager(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
             super(context, attrs, defStyleAttr, defStyleRes);
-        }
-
-        public CustomGridLayoutManager(Context context, int spanCount) {
-            super(context, spanCount);
-        }
-
-        public CustomGridLayoutManager(Context context, int spanCount, int orientation, boolean reverseLayout) {
-            super(context, spanCount, orientation, reverseLayout);
         }
     }
 }

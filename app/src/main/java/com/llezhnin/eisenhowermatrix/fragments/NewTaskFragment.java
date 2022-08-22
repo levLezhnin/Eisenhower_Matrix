@@ -43,7 +43,7 @@ public class NewTaskFragment extends Fragment {
         cb_is_important = view.findViewById(R.id.cb_is_important);
         cb_is_urgent = view.findViewById(R.id.cb_is_urgent);
         Button delete = view.findViewById(R.id.delete);
-        delete.setEnabled(false);
+        delete.setVisibility(View.INVISIBLE);
         Button btn_add = view.findViewById(R.id.apply);
 
         btn_add.setOnClickListener(view1 -> {

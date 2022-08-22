@@ -8,14 +8,16 @@
         <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/drawable-v24/style_important_not_urgent.xml" value="0.290625" />
         <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/drawable-v24/style_not_important_not_urgent.xml" value="0.290625" />
         <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/drawable-v24/style_not_important_urgent.xml" value="0.290625" />
-        <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/drawable/background_splash.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/drawable/background_splash.xml" value="0.4" />
+        <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/drawable/button_style_activity_main.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/drawable/button_style_fragment_task.xml" value="0.28615384615384615" />
         <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/drawable/ic_launcher_background.xml" value="0.290625" />
         <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/drawable/style_important_urgent.xml" value="0.290625" />
-        <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/layout/activity_main.xml" value="0.152" />
+        <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/layout/activity_main.xml" value="0.536" />
         <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/layout/activity_splash_screen.xml" value="0.16304347826086957" />
         <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/layout/fragment_new_task.xml" value="0.2" />
         <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/layout/fragment_new_work.xml" value="0.16032608695652173" />
-        <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/layout/fragment_task.xml" value="0.176" />
+        <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/layout/fragment_task.xml" value="0.264" />
         <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/layout/fragment_tasks_sorted.xml" value="0.1453804347826087" />
         <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/layout/fragment_work_item.xml" value="0.18614130434782608" />
         <entry key="..\:/Users/lezhn/AndroidStudioProjects/EisenhowerMatrix/app/src/main/res/layout/new_app_widget.xml" value="0.1852355072463768" />
